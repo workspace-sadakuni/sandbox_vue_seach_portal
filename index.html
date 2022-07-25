@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue.js 3</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="app">
+    <h2>portal <span class="text-blue" v-bind:class="{ large : isLarge, 'text-font-weight' : textFontWeight }">sandbox</span> vue.js</h2>
+
+    <section>
+      <h3>■Count Up Function</h3>
+      <button-counter></button-counter>
+    </section>
+
+    <section>
+      <h3>■Search Qiita documents</h3>
+      <search-qiita></search-qiita>
+    </section>
+    
+    <section>
+      <h3>■Search Hotel by Location</h3>
+      <p><input type="text" v-model="hotelsKeyword"></p>
+      <p>{{ searchHotelMessage }}</p>
+      <ul>
+        <li v-for="hotel in hotels">
+          <a v-bind:href="hotel['hotel'][0]['hotelBasicInfo']['hotelInformationUrl']" target="_blank">{{ hotel["hotel"][0]["hotelBasicInfo"]["hotelName"] }}</a> <br> {{ hotel["hotel"][0]["hotelBasicInfo"]["access"] }}
+        </li>
+      </ul>
+    </section>
+  </div>
+  <script src="https://unpkg.com/vue@3.1.5"></script>
+  <script src="https://unpkg.com/axios@0.21.1/dist/axios.js"></script> <!-- HTTPクライアントaxios読み込み -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.js"></script> <!-- ユーティリティライブラリlodash読み込み -->
+  <script src="js/env.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
